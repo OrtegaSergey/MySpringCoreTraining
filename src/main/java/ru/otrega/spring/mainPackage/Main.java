@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
-        Robot robot = (Robot) applicationContext.getBean("Robot");
+        TestBean tb = (TestBean) applicationContext.getBean("testBean");
 
 
     }
