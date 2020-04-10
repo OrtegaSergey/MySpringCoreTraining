@@ -7,7 +7,7 @@
     </bean>
 
     <bean id="musicPlayer" class="ru.otrega.spring.mainPackage.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <property name="music" ref="musicBean"/>
     </bean>
 
 
