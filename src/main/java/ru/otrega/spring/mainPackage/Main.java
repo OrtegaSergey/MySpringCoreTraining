@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
-        TestBean tb = (TestBean) applicationContext.getBean("testBean");
 
-
+        System.out.println(applicationContext.getBean("musicPlayer", MusicPlayer.class).playMusic());
+        
     }
 }

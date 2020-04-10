@@ -3,8 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="testBean" class="ru.otrega.spring.mainPackage.TestBean">
-        <constructor-arg value="Sergey"/>
+    <bean id="musicBean" class="ru.otrega.spring.mainPackage.ClassicalMusic">
+    </bean>
+
+    <bean id="musicPlayer" class="ru.otrega.spring.mainPackage.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
     </bean>
 
 
