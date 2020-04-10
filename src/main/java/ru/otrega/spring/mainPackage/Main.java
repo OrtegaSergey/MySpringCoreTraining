@@ -7,11 +7,12 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext applicationContext =
+        ClassPathXmlApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
 
         MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
-        System.out.println(musicPlayer.playMusic() + ", Volume: " + musicPlayer.getVolume());
-        
+        musicPlayer.playMusic();
+
+        applicationContext.close();
     }
 }

@@ -1,22 +1,29 @@
 package ru.otrega.spring.mainPackage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MusicPlayer {
-    private Music music;
+    private List<Music> musicList = new ArrayList<>();
     private String name;
     private int volume;
 
     public MusicPlayer(){}
 
-    public MusicPlayer(Music music){
-        this.music = music;
+    public MusicPlayer(Music... music){
+        for (Music o:
+             music) {
+            musicList.add(o);
+        }
     }
 
-    public Music getMusic() {
-        return music;
+    public List<Music> getMusicList() {
+        return musicList;
     }
 
-    public void setMusic(Music music) {
-        this.music = music;
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
     public String getName() {
@@ -35,7 +42,19 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public String playMusic(){
-        return "Playing: " + music.getSong();
+    @Override
+    public String toString() {
+        return "MusicPlayer{" +
+                "musicList=" + musicList +
+                ", name='" + name + '\'' +
+                ", volume=" + volume +
+                '}';
+    }
+
+    public void playMusic(){
+        for (Music o:
+             musicList) {
+            System.out.println("Playing: " + o.getSong() + ", Volume: " + getVolume());
+        }
     }
 }
