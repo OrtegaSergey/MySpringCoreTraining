@@ -11,7 +11,7 @@ public class Main {
                 new ClassPathXmlApplicationContext("applicationContext.xml");
 
         MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playMusic();
+        musicPlayer.playMusic(MusicGenre.ROCK);
 
         applicationContext.close();
     }

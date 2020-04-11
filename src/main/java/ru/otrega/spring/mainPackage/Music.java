@@ -1,5 +1,7 @@
 package ru.otrega.spring.mainPackage;
 
+import java.util.List;
+
 public interface Music {
-    public String getSong();
+    public List<String> getSongList();
 }

@@ -1,60 +1,44 @@
 package ru.otrega.spring.mainPackage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    private Music popMusic;
+    private Music rockMusic;
+    private Music classicalMusic;
+    private String name = "test";
+    private int volume = 30;
 
-    public MusicPlayer(){}
-
-    public MusicPlayer(Music... music){
-        for (Music o:
-             music) {
-            musicList.add(o);
-        }
+    @Autowired
+    public MusicPlayer(@Qualifier("popMusic") Music popMusic,
+                       @Qualifier("rockMusic") Music rockMusic,
+                       @Qualifier("classicalMusic") Music classicalMusic) {
+        this.popMusic = popMusic;
+        this.rockMusic = rockMusic;
+        this.classicalMusic = classicalMusic;
     }
 
-    public List<Music> getMusicList() {
-        return musicList;
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    @Override
-    public String toString() {
-        return "MusicPlayer{" +
-                "musicList=" + musicList +
-                ", name='" + name + '\'' +
-                ", volume=" + volume +
-                '}';
-    }
-
-    public void playMusic(){
-        for (Music o:
-             musicList) {
-            System.out.println("Playing: " + o.getSong() + ", Volume: " + getVolume());
+    public void playMusic(MusicGenre genre){
+        Random random = new Random();
+        switch (genre){
+            case POP:
+                System.out.println("Playing: " +
+                        popMusic.getSongList().get(random.nextInt(3)));
+                break;
+            case ROCK:
+                System.out.println("Playing: " +
+                        rockMusic.getSongList().get(random.nextInt(3)));
+                break;
+            case CLASSICAL:
+                System.out.println("Playing: " +
+                        classicalMusic.getSongList().get(random.nextInt(3)));
         }
     }
 }

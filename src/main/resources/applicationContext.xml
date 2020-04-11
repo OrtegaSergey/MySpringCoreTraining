@@ -4,33 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="classicalMusicBean" class="ru.otrega.spring.mainPackage.ClassicalMusic"
-        scope="prototype">
-    </bean>
-
-    <bean id="popMusicBean" class="ru.otrega.spring.mainPackage.PopMusic"
-        scope="prototype">
-    </bean>
-
-    <bean id="rockMusicBean" class="ru.otrega.spring.mainPackage.RockMusic"
-        init-method="myInitMethod"
-        destroy-method="myDestructionMethod"
-        factory-method="myFactoryMethod">
-    </bean>
-
-    <bean id="musicPlayer" class="ru.otrega.spring.mainPackage.MusicPlayer" scope="prototype">
-        <property name="musicList">
-            <list>
-                <ref bean="popMusicBean"/>
-                <ref bean="classicalMusicBean"/>
-                <ref bean="rockMusicBean"/>
-            </list>
-        </property>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    <context:component-scan base-package="ru.otrega.spring.mainPackage"/>
 
 
 
