@@ -1,14 +1,12 @@
 package ru.otrega.spring.mainPackage;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.awt.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.otrega.spring.mainPackage.config.SpringConfig;
 
 public class Main {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(SpringConfig.class);
 
         MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
         musicPlayer.playMusic(MusicGenre.ROCK);
